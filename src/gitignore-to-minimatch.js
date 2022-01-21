@@ -19,6 +19,7 @@ export function gitignoreToMinimatch(pattern) {
         return pattern;
     }
 
+    // strip off negation to make life easier
     const not = pattern.startsWith("!");
     const patternToTest = not ? pattern.slice(1) : pattern;
     let result = patternToTest;

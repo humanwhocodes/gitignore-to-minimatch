@@ -17,6 +17,7 @@ import { expect } from "chai";
 describe("gitignoreToMinimatch", () => {
 
     const patterns = new Map([
+        ["", ""],
         ["*", "**/*"],
         ["/foo", "foo"],
         ["foo", "**/foo"],
