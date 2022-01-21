@@ -1,6 +1,6 @@
 {
   "name": "@humanwhocodes/gitignore-to-minimatch",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Utility to convert gitignore patterns to minimatch patterns",
   "type": "module",
   "main": "dist/gitignore-to-minimatch.cjs",
