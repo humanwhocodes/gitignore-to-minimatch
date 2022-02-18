@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/humanwhocodes/gitignore-to-minimatch/compare/v1.0.0...v1.0.1) (2022-02-18)
+
+
+### Bug Fixes
+
+* Ensure deep matching of patterns ([77224de](https://www.github.com/humanwhocodes/gitignore-to-minimatch/commit/77224de58e5bd5c2405529736cdc704d53970455))
+
 ## 1.0.0 (2022-01-21)
 
 
