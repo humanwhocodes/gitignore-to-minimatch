@@ -40,6 +40,20 @@ export function gitignoreToMinimatch(pattern) {
             if (!result.includes("/") || result.endsWith("/")) {
                 result = "**/" + patternToTest;
             }
+
+            // no further changes if the pattern ends with a wildcard
+            if (patternToTest.endsWith("*") || patternToTest.endsWith("?")) {
+                break;
+            }
+
+            // differentiate between filenames and directory names
+            if (!/\.[a-z\d_-]+$/.test(patternToTest)) {
+                if (!patternToTest.endsWith("/")) {
+                    result += "/";
+                }
+
+                result += "**";
+            }
     }
 
     return not ? "!" + result : result;

@@ -20,11 +20,14 @@ describe("gitignoreToMinimatch", () => {
         ["", ""],
         ["*", "**/*"],
         ["/foo", "foo"],
-        ["foo", "**/foo"],
+        ["foo", "**/foo/**"],
         ["*.js", "**/*.js"],
-        ["foo/bar", "foo/bar"],
+        ["foo/bar", "foo/bar/**"],
         ["!foo?", "!**/foo?"],
-        ["**/*.js", "**/*.js"]
+        ["**/*.js", "**/*.js"],
+        ["fixtures", "**/fixtures/**"],
+        ["fixtures/", "**/fixtures/**"],
+        ["test.js", "**/test.js"]
     ]);
 
     for (const [gitignorePattern, minimatchPattern] of patterns) {
