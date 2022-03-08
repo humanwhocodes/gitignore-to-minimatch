@@ -20,35 +20,39 @@ export function gitignoreToMinimatch(pattern) {
     }
 
     // strip off negation to make life easier
-    const not = pattern.startsWith("!");
-    const patternToTest = not ? pattern.slice(1) : pattern;
+    const negated = pattern.startsWith("!");
+    let patternToTest = negated ? pattern.slice(1) : pattern;
     let result = patternToTest;
+    let leadingSlash = false;
+
+    // strip off leading slash
+    if (patternToTest[0] === "/") {
+        leadingSlash = true;
+        result = patternToTest.slice(1);
+    }
 
     // For the most part, the first character determines what to do
-    switch (patternToTest[0]) {
-        case "/":
-            result = patternToTest.slice(1);
-            break;
+    switch (result[0]) {
 
         case "*":
             if (patternToTest[1] !== "*") {
-                result = "**/" + patternToTest;
+                result = "**/" + result;
             }
             break;
 
         default:
-            if (!result.includes("/") || result.endsWith("/")) {
-                result = "**/" + patternToTest;
+            if (!leadingSlash && !result.includes("/") || result.endsWith("/")) {
+                result = "**/" + result;
             }
 
             // no further changes if the pattern ends with a wildcard
-            if (patternToTest.endsWith("*") || patternToTest.endsWith("?")) {
+            if (result.endsWith("*") || result.endsWith("?")) {
                 break;
             }
 
             // differentiate between filenames and directory names
-            if (!/\.[a-z\d_-]+$/.test(patternToTest)) {
-                if (!patternToTest.endsWith("/")) {
+            if (!/\.[a-z\d_-]+$/.test(result)) {
+                if (!result.endsWith("/")) {
                     result += "/";
                 }
 
@@ -56,6 +60,6 @@ export function gitignoreToMinimatch(pattern) {
             }
     }
 
-    return not ? "!" + result : result;
+    return negated ? "!" + result : result;
 
 }

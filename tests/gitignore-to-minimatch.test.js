@@ -19,7 +19,7 @@ describe("gitignoreToMinimatch", () => {
     const patterns = new Map([
         ["", ""],
         ["*", "**/*"],
-        ["/foo", "foo"],
+        ["/foo", "foo/**"],
         ["foo", "**/foo/**"],
         ["*.js", "**/*.js"],
         ["foo/bar", "foo/bar/**"],
@@ -27,7 +27,8 @@ describe("gitignoreToMinimatch", () => {
         ["**/*.js", "**/*.js"],
         ["fixtures", "**/fixtures/**"],
         ["fixtures/", "**/fixtures/**"],
-        ["test.js", "**/test.js"]
+        ["test.js", "**/test.js"],
+        ["!/foo/bar", "!foo/bar/**"]
     ]);
 
     for (const [gitignorePattern, minimatchPattern] of patterns) {
