@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.2](https://www.github.com/humanwhocodes/gitignore-to-minimatch/compare/v1.0.1...v1.0.2) (2022-03-08)
+
+
+### Bug Fixes
+
+* Add wildcards to patterns with leading slash ([f9df5cf](https://www.github.com/humanwhocodes/gitignore-to-minimatch/commit/f9df5cf4d74369488fce086e69f1c60c61729afc))
+
 ### [1.0.1](https://www.github.com/humanwhocodes/gitignore-to-minimatch/compare/v1.0.0...v1.0.1) (2022-02-18)
 
 
